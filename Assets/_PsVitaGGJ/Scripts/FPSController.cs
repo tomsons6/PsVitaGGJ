@@ -12,16 +12,20 @@ public class FPSController : MonoBehaviour {
     CharacterController controller;
     GameObject mainCamera;
 
+    private MainGamePlayLogic mainScript;
+
     float xRotation = 0f;
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<CharacterController>();
         mainCamera = Camera.main.gameObject;
-        Cursor.lockState = CursorLockMode.Locked;
+        mainScript = FindObjectOfType<MainGamePlayLogic>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (!mainScript.gameRunning) return;
+
         Movement(Inputs.Instance.GetThumbstickLeft);
         CameraLook(Inputs.Instance.GetThumbstickRight);
 

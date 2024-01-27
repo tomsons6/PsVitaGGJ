@@ -25,9 +25,11 @@ public class Feet : MonoBehaviour {
 
     private bool finalStateReached = false;
 
+    private MainGamePlayLogic mainScript;
+
 	// Use this for initialization
 	void Start () {
-		
+        mainScript = FindObjectOfType<MainGamePlayLogic>();
 	}
 	
 	// Update is called once per frame
@@ -48,8 +50,8 @@ public class Feet : MonoBehaviour {
                 return;
             }
 
-            peeLevel += 0.05f * Time.deltaTime;
-            awakeLevel += 0.07f * Time.deltaTime;
+            peeLevel += (0.05f * 2f) * Time.deltaTime;
+            awakeLevel += (0.07f * 2f) * Time.deltaTime;
 
             
         }
@@ -64,8 +66,8 @@ public class Feet : MonoBehaviour {
                 return;
             }
 
-            peeLevel -= 0.005f * Time.deltaTime;
-            awakeLevel -= 0.035f * Time.deltaTime;
+            peeLevel -= (0.005f * 2f)* Time.deltaTime;
+            awakeLevel -= (0.035f * 2f) * Time.deltaTime;
         }
 
         if (peeSlider == null || awakeSlider == null)
@@ -131,6 +133,7 @@ public class Feet : MonoBehaviour {
         PS_pee.Play();
         aSource.clip = ohNoClip;
         aSource.Play();
+        mainScript.AddSuccessPoint();
         finalStateReached = true;
     }
 
@@ -139,6 +142,7 @@ public class Feet : MonoBehaviour {
         print("im awake");
         aSource.clip = getAwayClip;
         aSource.Play();
+        mainScript.AddFailPoint();
         finalStateReached = true;
     }
 

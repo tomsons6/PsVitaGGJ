@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class MainGamePlayLogic : MonoBehaviour
 {
+    public int successPoints = 0;
+    public int failPoints = 0;
+
+    public int maxSuccessPoints = 6;
+    public int maxFailPoints = 3;
+
+    public bool gameRunning = false;
 
     bool isLookingAtFeet = false;
 
@@ -19,6 +26,7 @@ public class MainGamePlayLogic : MonoBehaviour
     [SerializeField]private Feet currentFeet;
 
     [SerializeField]private SoundController soundsContr;
+    [SerializeField] private UIController ui;
 
     DoorScript tempScript;
 	// Use this for initialization
@@ -29,8 +37,10 @@ public class MainGamePlayLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameRunning) return;
         CastRayCast();
     }
+
     void CastRayCast()
     {
         RaycastHit hitInfo;
@@ -111,7 +121,7 @@ public class MainGamePlayLogic : MonoBehaviour
 
     private void TickleFeet()
     {
-        print("feet name: " + currentFeet.gameObject.name);
+        //print("feet name: " + currentFeet.gameObject.name);
         //tickleAnimator.SetBool("isTickling", true);
         tickleAnimator.SetTrigger("tickle");
         soundsContr.PlayTickleSound();
@@ -130,5 +140,40 @@ public class MainGamePlayLogic : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void AddSuccessPoint()
+    {
+        successPoints += 1;
+        if(successPoints >= maxSuccessPoints)
+        {
+            GameEnd(true);
+        }
+    }
+
+    public void AddFailPoint()
+    {
+        failPoints += 1;
+        if(failPoints >= maxFailPoints)
+        {
+            GameEnd(false);
+        }
+    }
+
+
+
+    public void GameStart()
+    {
+        gameRunning = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        ui.SwitchTo_Game();
+    }
+
+    private void GameEnd(bool gameSuccess)
+    {
+        gameRunning = false;
+        ui.SwitchTo_MainMenu();
+        Cursor.lockState = CursorLockMode.None;
+        ui.SwitchTo_WinLose(gameSuccess);
     }
 }
