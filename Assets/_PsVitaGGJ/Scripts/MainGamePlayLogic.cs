@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainGamePlayLogic : MonoBehaviour {
+public class MainGamePlayLogic : MonoBehaviour
+{
 
     bool isLookingAtFeet = false;
 
@@ -12,21 +13,21 @@ public class MainGamePlayLogic : MonoBehaviour {
     public Slider peeSlider;
     public Slider awakeSlider;
 
-    DoorScript[] doorsArray;
     [SerializeField]Feet[] feetsArray;
 
     [SerializeField]private Feet currentFeet;
 
+    DoorScript tempScript;
 	// Use this for initialization
 	void Start () {
-        doorsArray = FindObjectsOfType<DoorScript>();
         feetsArray = FindObjectsOfType<Feet>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         CastRayCast();
-	}
+    }
     void CastRayCast()
     {
         RaycastHit hitInfo;
@@ -62,17 +63,37 @@ public class MainGamePlayLogic : MonoBehaviour {
             }
             if (hitInfo.transform.CompareTag("Door"))
             {
-                foreach (DoorScript door in doorsArray)
+                if (tempScript == null)
                 {
-                    door.ShowText();
+                    tempScript = hitInfo.transform.GetComponent<DoorScript>();
                 }
-                Debug.Log("Open door");
+                else
+                {
+                    tempScript.ShowText();
+                    if (Inputs.Instance.IsL1Pressed && Inputs.Instance.IsR1Pressed || Input.GetKeyDown(KeyCode.O))
+                    {
+                        OpenDoor();
+                    }
+                    Debug.Log("Open door");
+                }
+            }
+            else if(tempScript != null)
+            {
+                tempScript.ClearText();
+                tempScript = null;
             }
         }
 
     }
 
-    
+    void OpenDoor()
+    {
+        if (!tempScript.IsOpen)
+        {
+            StartCoroutine(tempScript.OpenDoor());
+        }
+
+    }
 
     IEnumerator ShowText()
     {

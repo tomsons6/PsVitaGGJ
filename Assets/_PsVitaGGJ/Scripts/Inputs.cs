@@ -32,6 +32,9 @@ public class Inputs : MonoBehaviour {
     public PSVitaControlls previousFrame;
     public PSVitaControlls currentFrame;
 
+    public bool IsR1Pressed { get { return previousFrame.R1 == false && currentFrame.R1 == true; } }
+    public bool IsL1Pressed { get { return previousFrame.L1 == false && currentFrame.L1 == true; } }
+
     public bool IsSquarePressed { get { return previousFrame.square == false && currentFrame.square == true; } }
     public bool IsCirclePressed { get { return previousFrame.circle == false && currentFrame.circle == true; } }
     public bool IsTrianglePressed { get { return previousFrame.triangle == false && currentFrame.triangle == true; } }
