@@ -20,6 +20,8 @@ public class Feet : MonoBehaviour {
     public AudioClip ohNoClip;
     public AudioClip getAwayClip;
 
+    public Animator anim;
+
     [SerializeField]
     private bool gettingTickled = false;
 
@@ -142,6 +144,7 @@ public class Feet : MonoBehaviour {
         print("im awake");
         aSource.clip = getAwayClip;
         aSource.Play();
+        anim.SetBool("GetUp", true);
         mainScript.AddFailPoint();
         finalStateReached = true;
     }
