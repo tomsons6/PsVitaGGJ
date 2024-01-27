@@ -51,11 +51,16 @@ public class UIController : MonoBehaviour {
         WinLoseCanvas_Lose.SetActive(!gameSuccess);
     }
 
+    public void ReloadGame()
+    {
+        StartCoroutine(Reload());
+    }
+
     private IEnumerator Reload()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        Resources.UnloadUnusedAssets();
+        //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        //Resources.UnloadUnusedAssets();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
