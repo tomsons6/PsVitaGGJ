@@ -7,7 +7,7 @@ public class MainGamePlayLogic : MonoBehaviour {
     bool isLookingAtFeet = false;
 
     [SerializeField]
-    UnityEngine.UI.Text debugText;
+    public UnityEngine.UI.Text debugText;
 
 	// Use this for initialization
 	void Start () {
@@ -27,8 +27,10 @@ public class MainGamePlayLogic : MonoBehaviour {
             {
                 isLookingAtFeet = true;
                 Debug.Log("Look Feet");
-                if (Inputs.Instance.WasSwipedUp)
+                debugText.text = TouchSystem.Instance.WasSwipedUp.ToString();
+                if (TouchSystem.Instance.WasSwipedUp)
                 {
+                
                     StartCoroutine(ShowText());
                 }
             }
@@ -43,6 +45,9 @@ public class MainGamePlayLogic : MonoBehaviour {
         }
 
     }
+
+    
+
     IEnumerator ShowText()
     {
         debugText.text = "Tickeling feet";

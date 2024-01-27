@@ -29,9 +29,6 @@ public class Inputs : MonoBehaviour {
 
 
     }
-    Vector3 fp;
-    Vector3 lp;
-    float dragDistance;
     public PSVitaControlls previousFrame;
     public PSVitaControlls currentFrame;
 
@@ -122,7 +119,6 @@ public class Inputs : MonoBehaviour {
         InputButtons();
         DpadButtons();
         ShoulderButtons();
-        Swipe();
     }
     void AssignInputs()
     {
@@ -172,58 +168,5 @@ public class Inputs : MonoBehaviour {
         currentFrame.R1 = Input.GetKey(R1BtnKeyCode);
     }
 
-    void Swipe()
-    {
-        if (Input.touchCount == 1) // user is touching the screen with a single touch
-        {
-            Touch touch = Input.GetTouch(0); // get the touch
-            if (touch.phase == TouchPhase.Began) //check for the first touch
-            {
-                fp = touch.position;
-                lp = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
-            {
-                lp = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
-            {
-                lp = touch.position;  //last touch position. Ommitted if you use list
-
-                //Check if drag distance is greater than 20% of the screen height
-                if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance)
-                {//It's a drag
-                 //check if the drag is vertical or horizontal
-                    if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
-                    {   //If the horizontal movement is greater than the vertical movement...
-                        if ((lp.x > fp.x))  //If the movement was to the right)
-                        {   //Right swipe
-                            //debugField.text = ("Right Swipe");
-                        }
-                        else
-                        {   //Left swipe
-                            //debugField.text = ("Left Swipe");
-                        }
-                    }
-                    else
-                    {   //the vertical movement is greater than the horizontal movement
-                        if (lp.y > fp.y)  //If the movement was up
-                        {   //Up swipe
-                            //debugField.text = ("Up Swipe");
-                            WasSwipedUp = true;
-                        }
-                        else
-                        {   //Down swipe
-                            //debugField.text = ("Down Swipe");
-                        }
-                    }
-                }
-                else
-                {   //It's a tap as the drag distance is less than 20% of the screen height
-                    //debugField.text = ("Tap");
-                }
-            }
-        }
-        WasSwipedUp = false;
-    }
+   
 }
