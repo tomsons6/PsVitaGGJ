@@ -9,9 +9,11 @@ public class MainGamePlayLogic : MonoBehaviour {
     [SerializeField]
     public UnityEngine.UI.Text debugText;
 
+    DoorScript[] doorsArray;
+
 	// Use this for initialization
 	void Start () {
-		
+        doorsArray = FindObjectsOfType<DoorScript>();
 	}
 	
 	// Update is called once per frame
@@ -28,7 +30,7 @@ public class MainGamePlayLogic : MonoBehaviour {
                 isLookingAtFeet = true;
                 Debug.Log("Look Feet");
                 debugText.text = TouchSystem.Instance.WasSwipedUp.ToString();
-                if (TouchSystem.Instance.WasSwipedUp)
+                if (TouchSystem.Instance.WasSwipedUp || Input.GetKey(KeyCode.P))
                 {
                 
                     StartCoroutine(ShowText());
@@ -40,6 +42,10 @@ public class MainGamePlayLogic : MonoBehaviour {
             }
             if (hitInfo.transform.CompareTag("Door"))
             {
+                foreach (DoorScript door in doorsArray)
+                {
+                    door.ShowText();
+                }
                 Debug.Log("Open door");
             }
         }
@@ -53,5 +59,6 @@ public class MainGamePlayLogic : MonoBehaviour {
         debugText.text = "Tickeling feet";
         yield return new WaitForSeconds(1f);
         debugText.text = "";
+
     }
 }
