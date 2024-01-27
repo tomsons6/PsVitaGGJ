@@ -27,8 +27,11 @@ public class Inputs : MonoBehaviour {
         public bool L1;
         public bool R1;
 
+
     }
-    Touch getTouch;
+    Vector3 fp;
+    Vector3 lp;
+    float dragDistance;
     public PSVitaControlls previousFrame;
     public PSVitaControlls currentFrame;
 
@@ -36,6 +39,8 @@ public class Inputs : MonoBehaviour {
     public bool IsCirclePressed { get { return previousFrame.circle == false && currentFrame.circle == true; } }
     public bool IsTrianglePressed { get { return previousFrame.triangle == false && currentFrame.triangle == true; } }
     public bool IsCrossPressed { get { return previousFrame.cross == false && currentFrame.cross == true; } }
+
+    public bool WasSwipedUp = false;
 
     public bool IsDpadDownPressed { get { return previousFrame.dpad_down == false && currentFrame.dpad_down == true; } }
     public bool IsDpadRightPressed { get { return previousFrame.dpad_right == false && currentFrame.dpad_right == true; } }
@@ -117,7 +122,7 @@ public class Inputs : MonoBehaviour {
         InputButtons();
         DpadButtons();
         ShoulderButtons();
-        TouchScreenMethod();
+        Swipe();
     }
     void AssignInputs()
     {
@@ -166,10 +171,59 @@ public class Inputs : MonoBehaviour {
         currentFrame.L1 = Input.GetKey(L1BtnKeyCode);
         currentFrame.R1 = Input.GetKey(R1BtnKeyCode);
     }
-    void TouchScreenMethod()
+
+    void Swipe()
     {
-        //currentFrame.touchScreen = new Vector2(PSVitaInput.secondaryTouchHeight, PSVitaInput.secondaryTouchWidth);
-        currentFrame.touchScreen = PSVitaInput.GetSecondaryTouch(0).deltaPosition;
-;
+        if (Input.touchCount == 1) // user is touching the screen with a single touch
+        {
+            Touch touch = Input.GetTouch(0); // get the touch
+            if (touch.phase == TouchPhase.Began) //check for the first touch
+            {
+                fp = touch.position;
+                lp = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
+            {
+                lp = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
+            {
+                lp = touch.position;  //last touch position. Ommitted if you use list
+
+                //Check if drag distance is greater than 20% of the screen height
+                if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance)
+                {//It's a drag
+                 //check if the drag is vertical or horizontal
+                    if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y))
+                    {   //If the horizontal movement is greater than the vertical movement...
+                        if ((lp.x > fp.x))  //If the movement was to the right)
+                        {   //Right swipe
+                            //debugField.text = ("Right Swipe");
+                        }
+                        else
+                        {   //Left swipe
+                            //debugField.text = ("Left Swipe");
+                        }
+                    }
+                    else
+                    {   //the vertical movement is greater than the horizontal movement
+                        if (lp.y > fp.y)  //If the movement was up
+                        {   //Up swipe
+                            //debugField.text = ("Up Swipe");
+                            WasSwipedUp = true;
+                        }
+                        else
+                        {   //Down swipe
+                            //debugField.text = ("Down Swipe");
+                        }
+                    }
+                }
+                else
+                {   //It's a tap as the drag distance is less than 20% of the screen height
+                    //debugField.text = ("Tap");
+                }
+            }
+        }
+        WasSwipedUp = false;
     }
 }
