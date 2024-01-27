@@ -8,36 +8,34 @@ public class DoorScript : MonoBehaviour {
     UnityEngine.UI.Text MainText;
     [SerializeField]
     float animationSpeed = 2f;
-    public bool IsOpen;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public bool IsOpen = false;
+    public bool TextShowing = false;
 
     public void ShowText()
     {
+        TextShowing = true;
         MainText.text = "Press L1 and R1 to open";
+    }
+    public void ClearText()
+    {
+        TextShowing = false;
+        MainText.text = "";
     }
     public IEnumerator OpenDoor()
     {
         if (!IsOpen)
         {
             IsOpen = true;
-            Vector3 startPosition = transform.localRotation.eulerAngles;
-            Vector3 endPosition = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 30f, transform.localEulerAngles.z);
+            Vector3 startRotation = transform.localRotation.eulerAngles;
+            Vector3 endRotation = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y + 80f, transform.localEulerAngles.z);
             float t = 0f;
-            while (t > 1f)
+            while (t < 1f)
             {
-                t = Time.deltaTime * animationSpeed;
+                t += Time.deltaTime * animationSpeed;
 
-                Vector3 currentPosition = Vector3.Lerp(startPosition, endPosition, t);
+                Vector3 currentPosition = Vector3.Lerp(startRotation, endRotation, t);
 
-                transform.localPosition = currentPosition;
+                transform.localEulerAngles = currentPosition;
                 yield return null;
             }
 
