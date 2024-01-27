@@ -17,6 +17,7 @@ public class FPSController : MonoBehaviour {
 	void Start () {
         controller = GetComponent<CharacterController>();
         mainCamera = Camera.main.gameObject;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 	
 	// Update is called once per frame

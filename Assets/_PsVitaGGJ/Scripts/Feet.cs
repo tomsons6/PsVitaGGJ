@@ -59,11 +59,14 @@ public class Feet : MonoBehaviour {
             awakeLevel -= 0.035f * Time.deltaTime;
         }
 
+        if (peeSlider == null || awakeSlider == null)
+            return;
         peeSlider.value = peeLevel;
         awakeSlider.value = awakeLevel;
+        
     }
 
-    public void OnTickle(Slider _peeSlider, Slider _awakeSlider)
+    public void SetSliders(Slider _peeSlider, Slider _awakeSlider)
     {
         if (!peeSlider)
         {
@@ -73,6 +76,11 @@ public class Feet : MonoBehaviour {
         {
             awakeSlider = _awakeSlider;
         }
+    }
+
+    public void OnTickle()
+    {
+
 
         if (gettingTickled) return;
         StartCoroutine(Tickle());
@@ -95,5 +103,11 @@ public class Feet : MonoBehaviour {
     {
         print("im awake");
         finalStateReached = true;
+    }
+
+    public void RemoveSliders()
+    {
+        peeSlider = null;
+        awakeSlider = null;
     }
 }

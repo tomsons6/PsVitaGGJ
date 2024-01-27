@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainGamePlayLogic : MonoBehaviour {
 
@@ -8,9 +9,13 @@ public class MainGamePlayLogic : MonoBehaviour {
 
     [SerializeField]
     public UnityEngine.UI.Text debugText;
+    public Slider peeSlider;
+    public Slider awakeSlider;
 
     DoorScript[] doorsArray;
-    Feet[] feetsArray;
+    [SerializeField]Feet[] feetsArray;
+
+    [SerializeField]private Feet currentFeet;
 
 	// Use this for initialization
 	void Start () {
@@ -30,17 +35,30 @@ public class MainGamePlayLogic : MonoBehaviour {
             if (hitInfo.transform.CompareTag("Feet"))
             {
                 isLookingAtFeet = true;
-                Debug.Log("Look Feet");
+                if (currentFeet == null)
+                {
+                    currentFeet = GetFeetFromArray(hitInfo.transform.gameObject);
+                    currentFeet.SetSliders(peeSlider, awakeSlider);
+                    peeSlider.value = currentFeet.peeLevel;
+                    awakeSlider.value = currentFeet.awakeLevel;
+                }
+                //Debug.Log("Look Feet");
                 debugText.text = TouchSystem.Instance.WasSwipedUp.ToString();
                 if (TouchSystem.Instance.WasSwipedUp || Input.GetKey(KeyCode.P))
                 {
-                
-                    StartCoroutine(ShowText());
+                    
+                    //StartCoroutine(ShowText());
+                    TickleFeet();
                 }
             }
             else
             {
                 isLookingAtFeet = false;
+
+                if(currentFeet) currentFeet.RemoveSliders();
+                currentFeet = null;
+                peeSlider.value = 0f;
+                awakeSlider.value = 0f;
             }
             if (hitInfo.transform.CompareTag("Door"))
             {
@@ -58,9 +76,29 @@ public class MainGamePlayLogic : MonoBehaviour {
 
     IEnumerator ShowText()
     {
+        
+
         debugText.text = "Tickeling feet";
         yield return new WaitForSeconds(1f);
         debugText.text = "";
 
+    }
+
+    private void TickleFeet()
+    {
+        print("feet name: " + currentFeet.gameObject.name);
+        currentFeet.OnTickle();
+    }
+
+    private Feet GetFeetFromArray(GameObject obj)
+    {
+        foreach(Feet f in feetsArray)
+        {
+            if(f.gameObject == obj)
+            {
+                return f;
+            }
+        }
+        return null;
     }
 }
