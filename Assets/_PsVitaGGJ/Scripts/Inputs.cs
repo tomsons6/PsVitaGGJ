@@ -12,6 +12,8 @@ public class Inputs : MonoBehaviour {
         public Vector2 thumbstick_left;
         public Vector2 thumbstick_right;
 
+        public Vector2 touchScreen;
+
         public bool cross;
         public bool circle;
         public bool triangle;
@@ -26,6 +28,7 @@ public class Inputs : MonoBehaviour {
         public bool R1;
 
     }
+    Touch getTouch;
     public PSVitaControlls previousFrame;
     public PSVitaControlls currentFrame;
 
@@ -42,6 +45,7 @@ public class Inputs : MonoBehaviour {
     public Vector2 GetThumbstickLeft { get { return currentFrame.thumbstick_left; } }
     public Vector2 GetThumbstickRight { get { return currentFrame.thumbstick_right; } }
 
+    public Vector2 TouchScreen { get { return currentFrame.touchScreen; } }
 
     private string leftStickHorizontalAxis;
     private string leftStickVerticalAxis;
@@ -113,6 +117,7 @@ public class Inputs : MonoBehaviour {
         InputButtons();
         DpadButtons();
         ShoulderButtons();
+        TouchScreenMethod();
     }
     void AssignInputs()
     {
@@ -160,5 +165,11 @@ public class Inputs : MonoBehaviour {
     {
         currentFrame.L1 = Input.GetKey(L1BtnKeyCode);
         currentFrame.R1 = Input.GetKey(R1BtnKeyCode);
+    }
+    void TouchScreenMethod()
+    {
+        //currentFrame.touchScreen = new Vector2(PSVitaInput.secondaryTouchHeight, PSVitaInput.secondaryTouchWidth);
+        currentFrame.touchScreen = PSVitaInput.GetSecondaryTouch(0).deltaPosition;
+;
     }
 }
