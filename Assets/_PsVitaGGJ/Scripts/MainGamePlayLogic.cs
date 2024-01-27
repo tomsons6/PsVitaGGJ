@@ -12,6 +12,7 @@ public class MainGamePlayLogic : MonoBehaviour
     public UnityEngine.UI.Text debugText;
     public Slider peeSlider;
     public Slider awakeSlider;
+    public Animator tickleAnimator;
 
     [SerializeField]Feet[] feetsArray;
 
@@ -108,7 +109,11 @@ public class MainGamePlayLogic : MonoBehaviour
     private void TickleFeet()
     {
         print("feet name: " + currentFeet.gameObject.name);
+        //tickleAnimator.SetBool("isTickling", true);
+        tickleAnimator.SetTrigger("tickle");
         currentFeet.OnTickle();
+        //tickleAnimator.ResetTrigger("tickle");
+        //tickleAnimator.SetBool("isTickling", false);
     }
 
     private Feet GetFeetFromArray(GameObject obj)
