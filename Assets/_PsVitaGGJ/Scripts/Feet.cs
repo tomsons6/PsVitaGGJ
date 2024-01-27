@@ -13,6 +13,13 @@ public class Feet : MonoBehaviour {
 
     public ParticleSystem PS_pee;
 
+    public AudioSource aSource;
+    public AudioClip[] sleepLaughClips;
+    public AudioClip[] sleepGroanClips;
+
+    public AudioClip ohNoClip;
+    public AudioClip getAwayClip;
+
     [SerializeField]
     private bool gettingTickled = false;
 
@@ -83,28 +90,55 @@ public class Feet : MonoBehaviour {
     public void OnTickle()
     {
 
-
+        if (finalStateReached) return;
         if (gettingTickled) return;
         StartCoroutine(Tickle());
     }
 
     private IEnumerator Tickle()
     {
+
         gettingTickled = true;
+        PlaySound();
         yield return new WaitForSeconds(1f);
         gettingTickled = false;
     }
+
+    private void PlaySound()
+    {
+        float val = Random.value;
+
+        if (val > 0.6f)
+        {
+            if(Random.value < peeLevel)
+            {
+                aSource.clip = sleepLaughClips[Random.Range(0, sleepLaughClips.Length)];
+                aSource.Play();
+            }
+            else if(Random.value < awakeLevel)
+            {
+                aSource.clip = sleepGroanClips[Random.Range(0, sleepGroanClips.Length)];
+                aSource.Play();
+            }
+        }
+    }
+
+    
 
     private void OnPeeMax()
     {
         print("peeee!");
         PS_pee.Play();
+        aSource.clip = ohNoClip;
+        aSource.Play();
         finalStateReached = true;
     }
 
     private void OnAwakeMax()
     {
         print("im awake");
+        aSource.clip = getAwayClip;
+        aSource.Play();
         finalStateReached = true;
     }
 
