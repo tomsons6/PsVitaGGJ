@@ -18,6 +18,8 @@ public class MainGamePlayLogic : MonoBehaviour
 
     [SerializeField]private Feet currentFeet;
 
+    [SerializeField]private SoundController soundsContr;
+
     DoorScript tempScript;
 	// Use this for initialization
 	void Start () {
@@ -91,6 +93,7 @@ public class MainGamePlayLogic : MonoBehaviour
     {
         if (!tempScript.IsOpen)
         {
+            soundsContr.DoorSound();
             StartCoroutine(tempScript.OpenDoor());
         }
 
@@ -111,6 +114,7 @@ public class MainGamePlayLogic : MonoBehaviour
         print("feet name: " + currentFeet.gameObject.name);
         //tickleAnimator.SetBool("isTickling", true);
         tickleAnimator.SetTrigger("tickle");
+        soundsContr.PlayTickleSound();
         currentFeet.OnTickle();
         //tickleAnimator.ResetTrigger("tickle");
         //tickleAnimator.SetBool("isTickling", false);
