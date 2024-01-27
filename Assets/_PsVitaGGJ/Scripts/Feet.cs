@@ -11,6 +11,8 @@ public class Feet : MonoBehaviour {
     private Slider peeSlider;
     private Slider awakeSlider;
 
+    public ParticleSystem PS_pee;
+
     [SerializeField]
     private bool gettingTickled = false;
 
@@ -96,6 +98,7 @@ public class Feet : MonoBehaviour {
     private void OnPeeMax()
     {
         print("peeee!");
+        PS_pee.Play();
         finalStateReached = true;
     }
 
