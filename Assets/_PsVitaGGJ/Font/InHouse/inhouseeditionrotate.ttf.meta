@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 471be1eef0fef5349801c8af0d04d144
+timeCreated: 1706386884
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: In-House Edition Rotated
+  fontNames:
+  - In-House Edition Rotated
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

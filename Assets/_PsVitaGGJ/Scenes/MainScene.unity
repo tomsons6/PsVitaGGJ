@@ -2532,6 +2532,52 @@ Prefab:
       propertyPath: m_AnchoredPosition.x
       value: 146.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114688967741128314, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 66d61a8826aa4ba4485d10b49c6c8574,
+        type: 3}
+    - target: {fileID: 224711000426927136, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -105
+      objectReference: {fileID: 0}
+    - target: {fileID: 114688967741128314, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114688967741128314, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114688967741128314, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 224711000426927136, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114688967741128314, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114688967741128314, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114688967741128314, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64428cf0e6ed65f4484cfcfa2c8c0f5f, type: 2}
   m_IsPrefabParent: 0
@@ -4816,7 +4862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b4c378af4ee06489411ffcbc073f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainText: {fileID: 1469481640}
+  MainText: {fileID: 1779573543}
   animationSpeed: 2
   IsOpen: 0
   TextShowing: 0
@@ -4832,7 +4878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b4c378af4ee06489411ffcbc073f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainText: {fileID: 1469481640}
+  MainText: {fileID: 1779573543}
   animationSpeed: 2
   IsOpen: 0
   TextShowing: 0
@@ -4848,7 +4894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b4c378af4ee06489411ffcbc073f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainText: {fileID: 1469481640}
+  MainText: {fileID: 1779573543}
   animationSpeed: 2
   IsOpen: 0
   TextShowing: 0
@@ -4864,7 +4910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b4c378af4ee06489411ffcbc073f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainText: {fileID: 1469481640}
+  MainText: {fileID: 1779573543}
   animationSpeed: 2
   IsOpen: 0
   TextShowing: 0
@@ -4880,7 +4926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b4c378af4ee06489411ffcbc073f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainText: {fileID: 1469481640}
+  MainText: {fileID: 1779573543}
   animationSpeed: 2
   IsOpen: 0
   TextShowing: 0
@@ -4896,7 +4942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b4c378af4ee06489411ffcbc073f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainText: {fileID: 1469481640}
+  MainText: {fileID: 1779573543}
   animationSpeed: 2
   IsOpen: 0
   TextShowing: 0
@@ -6997,12 +7043,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1467337764}
   m_Mesh: {fileID: 4300010, guid: 39b2488bc905bfc49ac0c8eb46ae6b59, type: 3}
---- !u!114 &1469481640 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114170138063642948, guid: ac89ab89531cb9e4aace21fb3fb10539,
-    type: 2}
-  m_PrefabInternal: {fileID: 1629749665}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1502051716
 GameObject:
   m_ObjectHideFlags: 0

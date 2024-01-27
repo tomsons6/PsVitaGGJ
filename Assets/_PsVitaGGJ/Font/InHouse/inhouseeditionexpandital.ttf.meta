@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8b3e48a7f2bf9df4a9191e3d2d7325c9
+timeCreated: 1706386884
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: In-House Edition Expanded Italic
+  fontNames:
+  - In-House Edition Expanded Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

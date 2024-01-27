@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_PsVitaGGJ/Scenes/TestScene.unity
     guid: 85c7cb5c0fad1954688c844c27c0ff51
+  - enabled: 1
+    path: Assets/_PsVitaGGJ/Scenes/MainScene.unity
+    guid: 1dbebe0569262ff45b2424baf467f0cb

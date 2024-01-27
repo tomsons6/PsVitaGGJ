@@ -48,6 +48,7 @@ public class MainGamePlayLogic : MonoBehaviour
         {
             if (hitInfo.transform.CompareTag("Feet"))
             {
+                debugText.text = "Swipe up";
                 isLookingAtFeet = true;
                 if (currentFeet == null)
                 {
@@ -57,10 +58,8 @@ public class MainGamePlayLogic : MonoBehaviour
                     awakeSlider.value = currentFeet.awakeLevel;
                 }
                 //Debug.Log("Look Feet");
-                debugText.text = TouchSystem.Instance.WasSwipedUp.ToString();
                 if (TouchSystem.Instance.WasSwipedUp || Input.GetKey(KeyCode.P))
-                {
-                    
+                {                  
                     //StartCoroutine(ShowText());
                     TickleFeet();
                 }
@@ -73,6 +72,7 @@ public class MainGamePlayLogic : MonoBehaviour
                 currentFeet = null;
                 peeSlider.value = 0f;
                 awakeSlider.value = 0f;
+                debugText.text = "";
             }
             if (hitInfo.transform.CompareTag("Door"))
             {
@@ -106,16 +106,6 @@ public class MainGamePlayLogic : MonoBehaviour
             soundsContr.DoorSound();
             StartCoroutine(tempScript.OpenDoor());
         }
-
-    }
-
-    IEnumerator ShowText()
-    {
-        
-
-        debugText.text = "Tickeling feet";
-        yield return new WaitForSeconds(1f);
-        debugText.text = "";
 
     }
 

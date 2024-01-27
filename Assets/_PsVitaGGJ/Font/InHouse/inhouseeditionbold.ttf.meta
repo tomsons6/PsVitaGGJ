@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 66d61a8826aa4ba4485d10b49c6c8574
+timeCreated: 1706386884
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: In-House Edition Bold
+  fontNames:
+  - In-House Edition Bold
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

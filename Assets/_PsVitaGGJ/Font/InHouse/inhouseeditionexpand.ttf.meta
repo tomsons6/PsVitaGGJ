@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f9dc26ec7ddcda641955b7134473aac0
+timeCreated: 1706386885
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: In-House Edition Expanded
+  fontNames:
+  - In-House Edition Expanded
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
