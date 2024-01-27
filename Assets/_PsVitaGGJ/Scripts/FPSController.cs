@@ -6,7 +6,7 @@ public class FPSController : MonoBehaviour {
 
 
     [SerializeField]
-    float speed = 12f;
+    float speed = 8f;
     [SerializeField]
     float rotateSpeed = 10f;
     CharacterController controller;

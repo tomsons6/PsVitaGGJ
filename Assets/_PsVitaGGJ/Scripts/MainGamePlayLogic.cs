@@ -84,7 +84,10 @@ public class MainGamePlayLogic : MonoBehaviour
                 }
                 else
                 {
-                    tempScript.ShowText();
+                    if (!tempScript.IsOpen)
+                    {
+                        tempScript.ShowText();
+                    }
                     if (Inputs.Instance.IsL1Pressed && Inputs.Instance.IsR1Pressed || Input.GetKeyDown(KeyCode.O))
                     {
                         OpenDoor();

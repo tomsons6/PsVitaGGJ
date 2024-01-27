@@ -60,11 +60,11 @@ public class TouchSystem : MonoBehaviour {
                     {   //If the horizontal movement is greater than the vertical movement...
                         if ((lp.x > fp.x))  //If the movement was to the right)
                         {   //Right swipe
-                            mainLogic.debugText.text = ("Right Swipe");
+                            //mainLogic.debugText.text = ("Right Swipe");
                         }
                         else
                         {   //Left swipe
-                            mainLogic.debugText.text = ("Left Swipe");
+                            //mainLogic.debugText.text = ("Left Swipe");
                         }
                     }
                     else
@@ -76,13 +76,13 @@ public class TouchSystem : MonoBehaviour {
                         }
                         else
                         {   //Down swipe
-                            mainLogic.debugText.text = ("Down Swipe");
+                            //mainLogic.debugText.text = ("Down Swipe");
                         }
                     }
                 }
                 else
                 {   //It's a tap as the drag distance is less than 20% of the screen height
-                    mainLogic.debugText.text = ("Tap");
+                    //mainLogic.debugText.text = ("Tap");
                 }
             }
         }
