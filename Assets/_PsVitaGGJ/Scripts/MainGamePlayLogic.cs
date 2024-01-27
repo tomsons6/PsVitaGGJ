@@ -8,8 +8,8 @@ public class MainGamePlayLogic : MonoBehaviour
     public int successPoints = 0;
     public int failPoints = 0;
 
-    public int maxSuccessPoints = 6;
-    public int maxFailPoints = 3;
+    public int maxSuccessPoints = 3;
+    public int maxFailPoints = 2;
 
     public bool gameRunning = false;
 
@@ -17,6 +17,7 @@ public class MainGamePlayLogic : MonoBehaviour
 
     [SerializeField]
     public UnityEngine.UI.Text debugText;
+    public Text PointsText;
     public Slider peeSlider;
     public Slider awakeSlider;
     public Animator tickleAnimator;
@@ -32,6 +33,7 @@ public class MainGamePlayLogic : MonoBehaviour
 	// Use this for initialization
 	void Start () {
         feetsArray = FindObjectsOfType<Feet>();
+        PointsText.text = "Woken: " + successPoints + "/" + maxSuccessPoints;
     }
 
     // Update is called once per frame
@@ -135,7 +137,8 @@ public class MainGamePlayLogic : MonoBehaviour
     public void AddSuccessPoint()
     {
         successPoints += 1;
-        if(successPoints >= maxSuccessPoints)
+        PointsText.text = "Woken: " + successPoints + "/" + maxSuccessPoints;
+        if (successPoints >= maxSuccessPoints)
         {
             GameEnd(true);
         }
