@@ -10,10 +10,12 @@ public class MainGamePlayLogic : MonoBehaviour {
     public UnityEngine.UI.Text debugText;
 
     DoorScript[] doorsArray;
+    Feet[] feetsArray;
 
 	// Use this for initialization
 	void Start () {
         doorsArray = FindObjectsOfType<DoorScript>();
+        feetsArray = FindObjectsOfType<Feet>();
 	}
 	
 	// Update is called once per frame

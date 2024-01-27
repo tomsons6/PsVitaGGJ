@@ -8,8 +8,8 @@ public class Feet : MonoBehaviour {
     public float peeLevel = 0f;
     public float awakeLevel = 0f;
 
-    public Slider peeSlider;
-    public Slider awakeSlider;
+    private Slider peeSlider;
+    private Slider awakeSlider;
 
     [SerializeField]
     private bool gettingTickled = false;
@@ -63,8 +63,17 @@ public class Feet : MonoBehaviour {
         awakeSlider.value = awakeLevel;
     }
 
-    public void OnTickle()
+    public void OnTickle(Slider _peeSlider, Slider _awakeSlider)
     {
+        if (!peeSlider)
+        {
+            peeSlider = _peeSlider;
+        }
+        if (!awakeSlider)
+        {
+            awakeSlider = _awakeSlider;
+        }
+
         if (gettingTickled) return;
         StartCoroutine(Tickle());
     }
