@@ -4707,16 +4707,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepLaughClips.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepGroanClips.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4662152875409044, guid: 2effe015d75db8749ba2909affe7f26e, type: 2}
       propertyPath: m_LocalPosition.x
       value: -3.478
@@ -4749,95 +4739,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 198785535448994036, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198785535448994036, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: randomSeed
-      value: -580097731
-      objectReference: {fileID: 0}
-    - target: {fileID: 1303435170840338, guid: 2effe015d75db8749ba2909affe7f26e, type: 2}
-      propertyPath: m_Name
-      value: Foot_Zone (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 65848493016599060, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 65848493016599060, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.7643018
-      objectReference: {fileID: 0}
-    - target: {fileID: 65848493016599060, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: m_Center.x
-      value: -0.13215089
-      objectReference: {fileID: 0}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepLaughClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: f5fb6d1e243c9154eb099ff3235d4afc, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepLaughClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8a3dd9ea3bcb1cd4898e5f10355027f0, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepLaughClips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: f5b31b5e64484d448b391af68071c785, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepLaughClips.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 7706cd6dee18a3d4ea8fe6566f9f9e8e, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepLaughClips.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: e783a5c96a8442f40b3f0baa25b9c70f, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepGroanClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4ddc91308c575d341acd053b90d5c449, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepGroanClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: d9368bb643f23ca4da4576b0165f5cce, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepGroanClips.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 2bc54ad1d3149f64f9b3fa4a09b4c4ee, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: sleepGroanClips.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 60f1ac8b655bda640895f85268ff94ad, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: aSource
-      value: 
-      objectReference: {fileID: 1289818274}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: getAwayClip
-      value: 
-      objectReference: {fileID: 8300000, guid: e01f7e13030398a4fac614ae30730a8f, type: 3}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: ohNoClip
-      value: 
-      objectReference: {fileID: 8300000, guid: aeacb256c19d42245ad604542b62388d, type: 3}
     - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
         type: 2}
       propertyPath: anim
@@ -4848,11 +4749,10 @@ Prefab:
       propertyPath: spot
       value: 
       objectReference: {fileID: 1927542215}
-    - target: {fileID: 114977550515299334, guid: 2effe015d75db8749ba2909affe7f26e,
-        type: 2}
-      propertyPath: wakingUpClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2e2951e4739eecf46bd8c59679d3dc74, type: 3}
+    - target: {fileID: 1303435170840338, guid: 2effe015d75db8749ba2909affe7f26e, type: 2}
+      propertyPath: m_Name
+      value: Foot_Zone (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2effe015d75db8749ba2909affe7f26e, type: 2}
   m_IsPrefabParent: 0
@@ -5012,91 +4912,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1227624186}
---- !u!1 &1289818273 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1303435170840338, guid: 2effe015d75db8749ba2909affe7f26e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1163718372}
---- !u!82 &1289818274
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289818273}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.324
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 0.65
-  MaxDistance: 1.74
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0.43333334
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &1315681304
 GameObject:
   m_ObjectHideFlags: 0
