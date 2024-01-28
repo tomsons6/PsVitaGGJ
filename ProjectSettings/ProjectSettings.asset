@@ -504,7 +504,7 @@ PlayerSettings:
   psp2ParamSfxPath: 
   psp2ManualPath: 
   psp2LiveAreaGatePath: Assets/_PsVitaGGJ/Textures/ResizedIcon.png
-  psp2LiveAreaBackroundPath: Assets/_PsVitaGGJ/Textures/BackgrounImage.png
+  psp2LiveAreaBackroundPath: Assets/_PsVitaGGJ/Textures/SplashScreen.png
   psp2LiveAreaPath: 
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
