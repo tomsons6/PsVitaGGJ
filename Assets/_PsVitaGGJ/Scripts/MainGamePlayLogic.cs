@@ -55,7 +55,13 @@ public class MainGamePlayLogic : MonoBehaviour
             }
             else
             {
-                tempFeet = null;
+                if(tempFeet != null)
+                {
+                    if (!tempFeet.isHiding)
+                    {
+                        tempFeet = null;
+                    }
+                }
             }
             if (hitInfo.transform.CompareTag("Feet"))
             {
