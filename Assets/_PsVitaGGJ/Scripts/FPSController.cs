@@ -11,6 +11,12 @@ public class FPSController : MonoBehaviour {
     float rotateSpeed = 10f;
     CharacterController controller;
     GameObject mainCamera;
+    public float whyPosition = 0.83f;
+
+
+    private bool isGrounded = false;
+    private Vector3 playerVelocity;
+    private float gravityValue = -9.81f;
 
     private MainGamePlayLogic mainScript;
 
@@ -37,8 +43,17 @@ public class FPSController : MonoBehaviour {
 
     void Movement(Vector2 leftStickInput)
     {
+        isGrounded = controller.isGrounded;
+        if(isGrounded && playerVelocity.y < 0f)
+        {
+            playerVelocity.y = 0f;
+        }
+
         Vector3 move = transform.right * leftStickInput.x + transform.forward * leftStickInput.y;
         controller.Move(move * speed * Time.deltaTime);
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
     void CameraLook(Vector2 rightStickInput)
     {
