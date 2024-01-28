@@ -13,27 +13,27 @@ public class MainGamePlayLogic : MonoBehaviour
 
     public bool gameRunning = false;
 
-    //bool isLookingAtFeet = false;
+    bool isLookingAtFeet = false;
 
-    //[SerializeField]
-    //public UnityEngine.UI.Text debugText;
+    [SerializeField]
+    public UnityEngine.UI.Text debugText;
     public Text PointsText;
     public Slider peeSlider;
     public Slider awakeSlider;
     public Animator tickleAnimator;
 
-    //[SerializeField]Feet[] feetsArray;
+    [SerializeField]Feet[] feetsArray;
 
-    //[SerializeField]private Feet currentFeet;
+    [SerializeField]private Feet currentFeet;
 
     [SerializeField]private SoundController soundsContr;
-    [SerializeField] public UIController ui;
+    [SerializeField] private UIController ui;
 
-    DoorScript tempDoor;
+    DoorScript tempScript;
     Feet tempFeet;
     // Use this for initialization
     void Start () {
-        //feetsArray = FindObjectsOfType<Feet>();
+        feetsArray = FindObjectsOfType<Feet>();
         PointsText.text = "Woken: " + successPoints + "/" + maxSuccessPoints;
     }
 
@@ -47,82 +47,64 @@ public class MainGamePlayLogic : MonoBehaviour
     void CastRayCast()
     {
         RaycastHit hitInfo;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20f))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 2f))
         {
-            //if (hitInfo.transform.GetComponent<Feet>() != null)
-            //{
-            //    tempFeet = hitInfo.transform.GetComponent<Feet>();
-            //    tempFeet.SetSliders(peeSlider, awakeSlider);
-            //    peeSlider.value = tempFeet.peeLevel;
-            //    awakeSlider.value = tempFeet.awakeLevel;
-            //}
-            //else
-            //{
-            //    tempFeet = null;
-            //}
+            if (hitInfo.transform.GetComponent<Feet>() != null)
+            {
+                tempFeet = hitInfo.transform.GetComponent<Feet>();
+            }
+            else
+            {
+                tempFeet = null;
+            }
             if (hitInfo.transform.CompareTag("Feet"))
             {
-                if(tempFeet == null)
+                if (!hitInfo.transform.GetComponent<Feet>().isHiding)
                 {
-                    tempFeet = hitInfo.transform.GetComponent<Feet>();
-                    tempFeet.SetSliders(peeSlider, awakeSlider);
-                    peeSlider.value = tempFeet.peeLevel;
-                    awakeSlider.value = tempFeet.awakeLevel;
+                    debugText.text = "Swipe up";
                 }
-
-                if (!tempFeet.isHiding && !tempFeet.finalStateReached)
+                isLookingAtFeet = true;
+                if (currentFeet == null)
                 {
-                    ui.SetText("Swipe up");
+                    currentFeet = GetFeetFromArray(hitInfo.transform.gameObject);
+                    currentFeet.SetSliders(peeSlider, awakeSlider);
+                    peeSlider.value = currentFeet.peeLevel;
+                    awakeSlider.value = currentFeet.awakeLevel;
                 }
-                else if(tempFeet.finalStateReached)
-                {
-                    ui.SetText("");
-                }
-                //isLookingAtFeet = true;
-                //if (tempFeet == null)
-                //{
-                //    //tempFeet = GetFeetFromArray(hitInfo.transform.gameObject);
-                //    currentFeet.SetSliders(peeSlider, awakeSlider);
-                //    peeSlider.value = currentFeet.peeLevel;
-                //    awakeSlider.value = currentFeet.awakeLevel;
-                //}
                 //Debug.Log("Look Feet");
                 if (TouchSystem.Instance.WasSwipedUp || Input.GetKey(KeyCode.P))
-                {
+                {                  
                     //StartCoroutine(ShowText());
-                    if (tempFeet.gettingTickled) return;
                     TickleFeet();
                 }
             }
             else
             {
-                //isLookingAtFeet = false;
+                isLookingAtFeet = false;
 
-                if(tempFeet) tempFeet.RemoveSliders();
-                
+                if(currentFeet) currentFeet.RemoveSliders();
+                currentFeet = null;
                 peeSlider.value = 0f;
                 awakeSlider.value = 0f;
                 if (tempFeet != null)
                 {
-                    if (!tempFeet.isHiding || tempFeet.finalStateReached)
+                    if (!tempFeet.isHiding)
                     {
-                        ui.SetText("");
+                        debugText.text = "";
                     }
                 }
-                //ui.SetText("");
-                tempFeet = null;
             }
             if (hitInfo.transform.CompareTag("Door"))
             {
-                if (tempDoor == null)
+                if (tempScript == null)
                 {
-                    tempDoor = hitInfo.transform.GetComponent<DoorScript>();
+                    tempScript = hitInfo.transform.GetComponent<DoorScript>();
                 }
                 else
                 {
-                    if (!tempDoor.IsOpen)
+                    if (!tempScript.IsOpen)
                     {
-                        tempDoor.ShowText();
+                        tempScript.ShowText();
                     }
                     if (Inputs.Instance.IsL1Pressed && Inputs.Instance.IsR1Pressed || Input.GetKeyDown(KeyCode.O))
                     {
@@ -131,28 +113,30 @@ public class MainGamePlayLogic : MonoBehaviour
                     Debug.Log("Open door");
                 }
             }
-            else if(tempDoor != null)
+            else if(tempScript != null)
             {
-                //if(tempFeet != null)
-                //{
-                //    if (tempFeet.isHiding)
-                //    {
-                //        tempDoor.ClearText();
-                //    }
-                //}
-                tempDoor.ClearText();
-                tempDoor = null;
+                if(tempFeet != null)
+                {
+                    if (!tempFeet.isHiding)
+                    {
+                        debugText.text = "";
+                    }
+                }
+                else
+                {
+                    debugText.text = "";
+                }
+                tempScript = null;
             }
         }
-
     }
 
     void OpenDoor()
     {
-        if (!tempDoor.IsOpen)
+        if (!tempScript.IsOpen)
         {
             soundsContr.DoorSound();
-            StartCoroutine(tempDoor.OpenDoor());
+            StartCoroutine(tempScript.OpenDoor());
         }
 
     }
@@ -163,22 +147,22 @@ public class MainGamePlayLogic : MonoBehaviour
         //tickleAnimator.SetBool("isTickling", true);
         tickleAnimator.SetTrigger("tickle");
         soundsContr.PlayTickleSound();
-        tempFeet.OnTickle();
+        currentFeet.OnTickle();
         //tickleAnimator.ResetTrigger("tickle");
         //tickleAnimator.SetBool("isTickling", false);
     }
 
-    //private Feet GetFeetFromArray(GameObject obj)
-    //{
-    //    foreach(Feet f in feetsArray)
-    //    {
-    //        if(f.gameObject == obj)
-    //        {
-    //            return f;
-    //        }
-    //    }
-    //    return null;
-    //}
+    private Feet GetFeetFromArray(GameObject obj)
+    {
+        foreach(Feet f in feetsArray)
+        {
+            if(f.gameObject == obj)
+            {
+                return f;
+            }
+        }
+        return null;
+    }
 
     public void AddSuccessPoint()
     {

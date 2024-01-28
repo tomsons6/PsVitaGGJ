@@ -18,16 +18,15 @@ public class Feet : MonoBehaviour
     public AudioClip[] sleepLaughClips;
     public AudioClip[] sleepGroanClips;
 
-    public AudioClip wakingUpClip;
     public AudioClip ohNoClip;
     public AudioClip getAwayClip;
 
     public Animator anim;
 
     [SerializeField]
-    public bool gettingTickled = false;
+    private bool gettingTickled = false;
 
-    public bool finalStateReached = false;
+    private bool finalStateReached = false;
 
     private MainGamePlayLogic mainScript;
 
@@ -49,7 +48,7 @@ public class Feet : MonoBehaviour
 
         if (isHiding)
         {
-            mainScript.ui.SetText("HIDE IN THE CORNER!");
+            mainScript.debugText.text = "HIDE IN THE CORNER!";
         }
 
         if (peeLevel >= 1f)
@@ -70,10 +69,7 @@ public class Feet : MonoBehaviour
         }
         else
         {
-            if (peeLevel >= 0f)
             peeLevel -= (0.005f * 2f) * Time.deltaTime;
-
-            if(awakeLevel >= 0f)
             awakeLevel -= (0.035f * 2f) * Time.deltaTime;
         }
 
@@ -140,21 +136,22 @@ public class Feet : MonoBehaviour
     {
         Debug.Log("start hiding");
         isHiding = true;
-        aSource.clip = wakingUpClip;
-        aSource.Play();
         yield return new WaitForSeconds(5f);
         if (spot.isHiding)
         {
             peeLevel += .3f;
             Debug.Log("is hidden");
+            mainScript.debugText.text = "He did not see you";
         }
         else
         {
             Debug.Log("didnt make it");
+            mainScript.debugText.text = "Oh no, you have been spotted!";
             OnAwakeMax();
         }
-        mainScript.ui.SetText("He did not see you");
         isHiding = false;
+        yield return new WaitForSeconds(1f);
+        mainScript.debugText.text = "";
     }
 
 
@@ -165,7 +162,6 @@ public class Feet : MonoBehaviour
         aSource.clip = ohNoClip;
         aSource.Play();
         mainScript.AddSuccessPoint();
-        StopAllCoroutines();
         finalStateReached = true;
     }
 
@@ -176,7 +172,6 @@ public class Feet : MonoBehaviour
         aSource.Play();
         anim.SetBool("GetUp", true);
         mainScript.AddFailPoint();
-        StopAllCoroutines();
         finalStateReached = true;
     }
 
