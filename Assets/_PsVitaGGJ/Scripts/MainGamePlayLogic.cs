@@ -30,8 +30,9 @@ public class MainGamePlayLogic : MonoBehaviour
     [SerializeField] private UIController ui;
 
     DoorScript tempScript;
-	// Use this for initialization
-	void Start () {
+    Feet tempFeet;
+    // Use this for initialization
+    void Start () {
         feetsArray = FindObjectsOfType<Feet>();
         PointsText.text = "Woken: " + successPoints + "/" + maxSuccessPoints;
     }
@@ -48,9 +49,20 @@ public class MainGamePlayLogic : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitInfo, 20f))
         {
+            if (hitInfo.transform.GetComponent<Feet>() != null)
+            {
+                tempFeet = hitInfo.transform.GetComponent<Feet>();
+            }
+            else
+            {
+                tempFeet = null;
+            }
             if (hitInfo.transform.CompareTag("Feet"))
             {
-                debugText.text = "Swipe up";
+                if (!hitInfo.transform.GetComponent<Feet>().isHiding)
+                {
+                    debugText.text = "Swipe up";
+                }
                 isLookingAtFeet = true;
                 if (currentFeet == null)
                 {
@@ -74,7 +86,13 @@ public class MainGamePlayLogic : MonoBehaviour
                 currentFeet = null;
                 peeSlider.value = 0f;
                 awakeSlider.value = 0f;
-                debugText.text = "";
+                if (tempFeet != null)
+                {
+                    if (tempFeet.isHiding)
+                    {
+                        debugText.text = "";
+                    }
+                }
             }
             if (hitInfo.transform.CompareTag("Door"))
             {
@@ -97,11 +115,16 @@ public class MainGamePlayLogic : MonoBehaviour
             }
             else if(tempScript != null)
             {
-                tempScript.ClearText();
+                if(tempFeet != null)
+                {
+                    if (tempFeet.isHiding)
+                    {
+                        tempScript.ClearText();
+                    }
+                }
                 tempScript = null;
             }
         }
-
     }
 
     void OpenDoor()
