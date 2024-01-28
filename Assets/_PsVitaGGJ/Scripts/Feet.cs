@@ -18,15 +18,16 @@ public class Feet : MonoBehaviour
     public AudioClip[] sleepLaughClips;
     public AudioClip[] sleepGroanClips;
 
+    public AudioClip wakingUpClip;
     public AudioClip ohNoClip;
     public AudioClip getAwayClip;
 
     public Animator anim;
 
     [SerializeField]
-    private bool gettingTickled = false;
+    public bool gettingTickled = false;
 
-    private bool finalStateReached = false;
+    public bool finalStateReached = false;
 
     private MainGamePlayLogic mainScript;
 
@@ -48,7 +49,7 @@ public class Feet : MonoBehaviour
 
         if (isHiding)
         {
-            mainScript.debugText.text = "HIDE IN THE CORNER!";
+            mainScript.ui.SetText("HIDE IN THE CORNER!");
         }
 
         if (peeLevel >= 1f)
@@ -69,7 +70,10 @@ public class Feet : MonoBehaviour
         }
         else
         {
+            if (peeLevel >= 0f)
             peeLevel -= (0.005f * 2f) * Time.deltaTime;
+
+            if(awakeLevel >= 0f)
             awakeLevel -= (0.035f * 2f) * Time.deltaTime;
         }
 
@@ -136,6 +140,8 @@ public class Feet : MonoBehaviour
     {
         Debug.Log("start hiding");
         isHiding = true;
+        aSource.clip = wakingUpClip;
+        aSource.Play();
         yield return new WaitForSeconds(5f);
         if (spot.isHiding)
         {
@@ -147,7 +153,7 @@ public class Feet : MonoBehaviour
             Debug.Log("didnt make it");
             OnAwakeMax();
         }
-        mainScript.debugText.text = "He did not see you";
+        mainScript.ui.SetText("He did not see you");
         isHiding = false;
     }
 
@@ -159,6 +165,7 @@ public class Feet : MonoBehaviour
         aSource.clip = ohNoClip;
         aSource.Play();
         mainScript.AddSuccessPoint();
+        StopAllCoroutines();
         finalStateReached = true;
     }
 
@@ -169,6 +176,7 @@ public class Feet : MonoBehaviour
         aSource.Play();
         anim.SetBool("GetUp", true);
         mainScript.AddFailPoint();
+        StopAllCoroutines();
         finalStateReached = true;
     }
 

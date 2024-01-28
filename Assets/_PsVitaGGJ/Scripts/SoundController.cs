@@ -15,11 +15,7 @@ public class SoundController : MonoBehaviour {
     void Start () {
         StartCoroutine(MonsterSounds());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
     private IEnumerator MonsterSounds()
     {
@@ -40,7 +36,7 @@ public class SoundController : MonoBehaviour {
     public void PlayTickleSound()
     {
         SetRandomPitch(generalSource);
-        generalSource.PlayOneShot(tickleClip, 0.6f);
+        generalSource.PlayOneShot(tickleClip, 0.3f);
     }
 
     private void SetRandomPitch(AudioSource source, float min = 0.95f, float max = 1.1f)

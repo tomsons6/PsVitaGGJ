@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour {
     public GameObject WinLoseCanvas_Win;
     public GameObject WinLoseCanvas_Lose;
 
+    public Text OnScreenText;
+
     // Use this for initialization
     void Start () {
         ApplicationStart();
@@ -25,6 +27,7 @@ public class UIController : MonoBehaviour {
     public void ApplicationStart()
     {
         SwitchTo_MainMenu();
+        SetText("");
     }
 
     public void SwitchTo_MainMenu()
@@ -58,10 +61,15 @@ public class UIController : MonoBehaviour {
 
     private IEnumerator Reload()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         //Resources.UnloadUnusedAssets();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+    }
+
+    public void SetText(string txt)
+    {
+        OnScreenText.text = txt;
     }
 
 }
