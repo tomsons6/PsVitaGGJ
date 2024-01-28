@@ -73,7 +73,7 @@ public class MainGamePlayLogic : MonoBehaviour
                 }
                 //Debug.Log("Look Feet");
                 if (TouchSystem.Instance.WasSwipedUp || Input.GetKey(KeyCode.P))
-                {                  
+                {
                     //StartCoroutine(ShowText());
                     TickleFeet();
                 }
@@ -82,7 +82,7 @@ public class MainGamePlayLogic : MonoBehaviour
             {
                 isLookingAtFeet = false;
 
-                if(currentFeet) currentFeet.RemoveSliders();
+                if (currentFeet) currentFeet.RemoveSliders();
                 currentFeet = null;
                 peeSlider.value = 0f;
                 awakeSlider.value = 0f;
@@ -113,9 +113,9 @@ public class MainGamePlayLogic : MonoBehaviour
                     Debug.Log("Open door");
                 }
             }
-            else if(tempScript != null)
+            else if (tempScript != null)
             {
-                if(tempFeet != null)
+                if (tempFeet != null)
                 {
                     if (!tempFeet.isHiding)
                     {
@@ -127,6 +127,20 @@ public class MainGamePlayLogic : MonoBehaviour
                     debugText.text = "";
                 }
                 tempScript = null;
+            }
+        }
+        else
+        {
+            if (tempFeet != null)
+            {
+                if (!tempFeet.isHiding)
+                {
+                    debugText.text = "";
+                }
+            }
+            else
+            {
+                debugText.text = "";
             }
         }
     }

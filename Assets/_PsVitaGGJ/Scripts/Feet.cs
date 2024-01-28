@@ -69,8 +69,14 @@ public class Feet : MonoBehaviour
         }
         else
         {
-            peeLevel -= (0.005f * 2f) * Time.deltaTime;
-            awakeLevel -= (0.035f * 2f) * Time.deltaTime;
+            if(peeLevel >= 0)
+            {
+                peeLevel -= (0.005f * 2f) * Time.deltaTime;
+            }
+            if(awakeLevel >= 0)
+            {
+                awakeLevel -= (0.035f * 2f) * Time.deltaTime;
+            }
         }
 
         if (peeSlider == null || awakeSlider == null)
